@@ -1,0 +1,15 @@
+development:  
+  adapter: postgresql
+  encoding: unicode
+  database: miczi_dev
+  pool: 5
+  username: miczi
+  password: ''
+
+test:  
+  adapter: postgresql
+  encoding: unicode
+  database: miczi_test
+  pool: 5
+  username: miczi
+  password: ''
