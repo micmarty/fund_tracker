@@ -1,11 +1,15 @@
 <h1>Welcome</h1>
+<% data = [
+    [1,1],[2,3],[3,5],[4,8],[6,4],[7,2]
+] %>
+<%= area_chart @dailyreports.group_by_day(:report_date).maximum(:value)%>
 
 <table>
   <tr>
     <th>Data</th>
     <th>Wartosc</th>
   </tr>
-  <% DailyReport.find_each do |daily_report| %>
+  <% @dailyreports.find_each do |daily_report| %>
       <tr>
         <td><%= daily_report.report_date %></td>
         <td><%= daily_report.value %></td>
