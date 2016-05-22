@@ -1,1 +1,14 @@
 <h1>Welcome</h1>
+
+<table>
+  <tr>
+    <th>Data</th>
+    <th>Wartosc</th>
+  </tr>
+  <% DailyReport.find_each do |daily_report| %>
+      <tr>
+        <td><%= daily_report.report_date %></td>
+        <td><%= daily_report.value %></td>
+      </tr>
+  <% end %>
+</table>
