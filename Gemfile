@@ -32,6 +32,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
+
+#MICZI's GEMS
+
 #Use fantastic CSV parser gem
 gem 'smarter_csv'
 
@@ -40,6 +44,28 @@ gem 'chartkick'
 
 #Project date into number
 gem 'groupdate'
+
+#printing array and hashes in a nice way
+gem 'awesome_print'
+
+gem 'bootstrap-sass'
+
+#is optional, but recommended. It automatically adds the proper vendor prefixes to CSS code when it is compiled.
+gem 'autoprefixer-rails'
+
+#date picker
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+
+
+
+
+
+
+
+
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

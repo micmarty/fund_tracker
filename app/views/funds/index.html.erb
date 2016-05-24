@@ -1,18 +1,43 @@
 <h1>Welcome</h1>
-<% data = [
-    [1,1],[2,3],[3,5],[4,8],[6,4],[7,2]
-] %>
-<%= area_chart @dailyreports.group_by_day(:report_date).maximum(:value)%>
 
-<table>
-  <tr>
-    <th>Data</th>
-    <th>Wartosc</th>
-  </tr>
-  <% @dailyreports.find_each do |daily_report| %>
-      <tr>
-        <td><%= daily_report.report_date %></td>
-        <td><%= daily_report.value %></td>
-      </tr>
-  <% end %>
-</table>
+<%= line_chart DailyReport.date_range("01/01/2004", "01/01/2006"), @chart_properties %>
+
+<hr/>
+
+
+<div class="container">
+  <div class="row">
+    <div class='col-sm-6'>
+      <div class="form-group">
+        <div class='input-group date' id='datetimepicker1'>
+          <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(function () {
+        $('#datetimepicker1').datetimepicker();
+      });
+    </script>
+  </div>
+</div>
+
+
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>Data</th>
+      <th>Wartość</th>
+    </tr>
+    <% @daily_reports.find_each do |daily_report| %>
+        <tr>
+          <td><%= daily_report.report_date %></td>
+          <td><%= daily_report.value %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+
