@@ -22,19 +22,25 @@ body {
   width: auto;
 }
 
-tr {
-  width: 100%;
-  display: inline-table;
-  table-layout: fixed;
-}
 
-table{
+//scrollable table
+#daily-repot-table{
   height:500px;              // <-- Select the height of the table
   display: -moz-groupbox;    // Firefox Bad Effect
+
+  tr {
+    width: 100%;
+    display: inline-table;
+    table-layout: fixed;
+  }
+
+  tbody{
+    overflow-y: scroll;
+    height: 400px;            //  <-- Select the height of the body
+    width: 100%;
+    position: absolute;
+  }
 }
-tbody{
-  overflow-y: scroll;
-  height: 400px;            //  <-- Select the height of the body
-  width: 100%;
-  position: absolute;
-}
+
+
+
