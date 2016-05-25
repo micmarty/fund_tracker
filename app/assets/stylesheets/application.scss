@@ -1,3 +1,40 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
+
+
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+tr {
+  width: 100%;
+  display: inline-table;
+  table-layout: fixed;
+}
+
+table{
+  height:500px;              // <-- Select the height of the table
+  display: -moz-groupbox;    // Firefox Bad Effect
+}
+tbody{
+  overflow-y: scroll;
+  height: 400px;            //  <-- Select the height of the body
+  width: 100%;
+  position: absolute;
+}

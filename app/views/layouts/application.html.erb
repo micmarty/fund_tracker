@@ -9,12 +9,15 @@
 </head>
 <body>
 
-<body class="container">
-  <div class="span12">
-    <%= yield %>
-  </div>
-</body>
+<div class="container theme-showcase" role="main">
+  <%= render "layouts/navbar" %>
+  <%= render "layouts/jumbotron" %>
+  <%= yield %>
+  <%= render "funds/datepicker" %>
+  <%= render "funds/table" %>
 
+
+</div> <!-- /container -->
 
 </body>
 </html>

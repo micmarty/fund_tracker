@@ -12,7 +12,7 @@ class FundsController < ApplicationController
             ytitle: "Wartość funduszu",
             library:
                 {
-                    #width: 800,
+                    #width: 1000,
                     #height:500,
                     #backgroundColor: "#E5FFCC"
                 }

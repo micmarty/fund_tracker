@@ -1,0 +1,39 @@
+<!-- show two datapickers side by side -->
+
+<div class="container">
+  <div class="row">
+
+    <!-- first picker -->
+    <div class='col-sm-6'>
+      <div class="form-group">
+        <div class='input-group date' id='datetimepicker1'>
+          <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- second picker -->
+    <div class='col-sm-6'>
+      <div class="form-group">
+        <div class='input-group date' id='datetimepicker2'>
+          <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      //load both datepickers
+      jQuery.noConflict();
+      jQuery(document).ready(function($) {
+        $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker2').datetimepicker();
+      });
+    </script>
+  </div>
+</div>
