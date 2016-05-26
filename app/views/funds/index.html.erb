@@ -1,4 +1,21 @@
-<%= line_chart DailyReport.date_range("01/01/2004", "01/01/2006"), @chart_properties %>
+
+
+<div id="main-chart" style="height: 300px;"></div>
+
+
+<script>
+  //1. Retrieve data from server as JSON
+    //get 2 columns from rails object as json file
+  var daily_reports = <%= @daily_reports.to_json(:only => [:report_date, :value]).html_safe %>
+
+  //2. Display chart
+    //Location: application.js
+    //Passed parameter: JSON file
+  drawChart(daily_reports);
+</script>
+
+
+
 
 
 

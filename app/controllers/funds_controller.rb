@@ -4,7 +4,6 @@ class FundsController < ApplicationController
 
   def index
     @daily_reports = DailyReport.all
-
     @chart_properties =
         {
             min: 0,
