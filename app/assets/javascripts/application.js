@@ -43,6 +43,7 @@ function parse_data_for_chartkick(raw_array) {
 
 //
 function updateChart() {
+
     //get values from both datepickers
     var start_date = Date.parse(document.getElementById("datetimepicker1-input").value);
     var end_date = Date.parse(document.getElementById("datetimepicker2-input").value);
@@ -66,6 +67,7 @@ function updateChart() {
             }
         });
     }
-    drawChart(filtered_data);
+    parsed_data = parse_data_for_chartkick(filtered_data);
+    Chartkick.LineChart("main-chart", parsed_data);
 }
 
