@@ -45,8 +45,8 @@ function parse_data_for_chartkick(raw_array) {
 function updateChart() {
 
     //get values from both datepickers
-    var start_date = Date.parse(document.getElementById("datetimepicker1-input").value);
-    var end_date = Date.parse(document.getElementById("datetimepicker2-input").value);
+    var start_date = Date.parse(document.getElementById("range-start-picker-input").value);
+    var end_date = Date.parse(document.getElementById("range-end-picker-input").value);
     var filtered_data = null;
 
     if(start_date >= end_date){
@@ -71,3 +71,55 @@ function updateChart() {
     Chartkick.LineChart("main-chart", parsed_data);
 }
 
+
+//load both datepickers
+function loadDatePickers(option){
+    jQuery.noConflict();
+    jQuery(document).ready(function($) {
+        if(option == 'range-pickers'){
+            $('#range-start-picker').datetimepicker();
+            $('#range-end-picker').datetimepicker();
+        }else if(option == 'deposit-pickers'){
+            $('#deposit-start-picker').datetimepicker();
+            $('#deposit-end-picker').datetimepicker();
+        }
+    });
+}
+
+function calculateDeposit(){
+    var deposit_value = document.getElementById('deposit-value-input').value;
+    var annual_rate = document.getElementById('interest-rate-input').value / 100;
+    var compounding_frequency = document.getElementById('compounding-frequency-input').value;
+    var compounding_frequency_selected_type = document.getElementById('compounding-frequency-select').value;
+
+    var period_beggining = document.getElementById('deposit-start-picker-input').value;
+    var period_ending = document.getElementById('deposit-end-picker-input').value;
+
+
+    period_beggining = Date.parse(period_beggining);
+    period_ending = Date.parse(period_ending);
+
+
+    //period given in years
+    var deposit_period = (period_ending - period_beggining)/(1000*60*60*24*365);
+
+    var in_a_year = 0;
+    switch(compounding_frequency_selected_type){
+        case 'days':
+            in_a_year = 365;
+            break;
+        case 'weeks':
+            in_a_year = 52;
+            break;
+        case 'months':
+            in_a_year = 12;
+            break;
+        case 'years':
+            in_a_year = 1;
+            break;
+    }
+    annual_compounds = in_a_year / compounding_frequency;
+    var deposit_value_after = deposit_value * Math.pow(1 + (annual_rate/annual_compounds),annual_compounds*deposit_period);
+
+    
+}

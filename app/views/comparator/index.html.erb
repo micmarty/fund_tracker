@@ -1,0 +1,12 @@
+<div class="jumbotron">
+  <h1>Bank deposit calculator</h1>
+
+  <%= render "comparator/deposit_value"%>
+  <%= render "comparator/interest_rate"%>
+  <%= render "comparator/compounding_frequency"%>
+  <%= render "comparator/datepickers"%>
+
+  <%= button_tag "Calculate and draw a chart!", type: 'button', onclick: "calculateDeposit();", class: 'btn btn-primary' %>
+
+</div>
+

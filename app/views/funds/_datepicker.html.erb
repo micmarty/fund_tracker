@@ -3,7 +3,7 @@
 
 <div class="container">
   <hr/>
-
+  <span class="input-group-addon" id="basic-addon1">Deposit value:</span>
   <div class="row">
     <div class="col-sm-offset-5 col-sm-2 text-center">
       <div class="btn-group" data-toggle="buttons">
@@ -19,8 +19,8 @@
     <!-- first picker -->
     <div class='col-sm-6'>
       <div class="form-group">
-        <div class='input-group date' id='datetimepicker1'>
-          <input id='datetimepicker1-input' type='text' class="form-control" />
+        <div class='input-group date' id='range-start-picker'>
+          <input id='range-start-picker-input' type='text' class="form-control" />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -31,8 +31,8 @@
     <!-- second picker -->
     <div class='col-sm-6'>
       <div class="form-group">
-        <div class='input-group date' id='datetimepicker2'>
-          <input id='datetimepicker2-input' type='text' class="form-control" />
+        <div class='input-group date' id='range-end-picker'>
+          <input id='range-end-picker-input' type='text' class="form-control" />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -42,12 +42,7 @@
     <hr/>
 
     <script type="text/javascript">
-      //load both datepickers
-      jQuery.noConflict();
-      jQuery(document).ready(function($) {
-        $('#datetimepicker1').datetimepicker();
-        $('#datetimepicker2').datetimepicker();
-      });
+      loadDatePickers('range-pickers');
     </script>
 
   </div>

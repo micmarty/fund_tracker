@@ -1,0 +1,35 @@
+<!-- datepickers -->
+
+  <div class="input-group">
+    <span class="input-group-addon">Deposit time:</span>
+
+
+    <div class='col-sm-6'>
+      <span class="input-group-addon">Deposit starting day</span>
+      <div class="form-group">
+        <div class='input-group date' id='deposit-start-picker'>
+          <input id='deposit-start-picker-input' type='text' class="form-control" />
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- second picker -->
+    <div class='col-sm-6'>
+      <span class="input-group-addon">Deposit ending day</span>
+      <div class="form-group">
+        <div class='input-group date' id='deposit-end-picker'>
+          <input id='deposit-end-picker-input' type='text' class="form-control" />
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+        </div>
+      </div>
+    </div>
+
+    <script>loadDatePickers('deposit-pickers');</script>
+    <br/>
+  </div>
