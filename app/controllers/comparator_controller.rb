@@ -1,2 +1,4 @@
 class ComparatorController < ApplicationController
+
+
 end

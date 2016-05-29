@@ -7,7 +7,7 @@
   //1. Retrieve data from server as JSON
     //get 2 columns from rails object as json file
   var daily_reports = <%= @daily_reports.to_json(:only => [:report_date, :value]).html_safe %>
-
+  daily_reports = <%= @daily_reports.to_json().html_safe %>
   //2. Display chart
     //Location: application.js
     //Passed parameter: JSON file

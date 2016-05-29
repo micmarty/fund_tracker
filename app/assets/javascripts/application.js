@@ -21,27 +21,47 @@
 
 var daily_reports_reference = null;
 
+function callChartkick(id_tag, parsed_data){
+    Chartkick.AreaChart(id_tag, parsed_data,
+        {
+            library:{
+                title: "Company's performance table",
+                hAxis:{
+                    title:"Date",
+                    format:"dd/MM/yy"
+                },
+                vAxis:{
+                    title:"Value"
+                },
+                discrete: false,    //don't show all possible xaxis values(dates)
+                curveType: "none",  //avoid curves
+                pointSize: 0        //shrink dot size to 0
+            }
+
+        }
+    );
+}
+
 function drawChart(daily_reports){
     //save reference to a global variable, for updateChart method
     daily_reports_reference = daily_reports;
-
     //When page loads, parse JSON and display chart with complete x-axis range
-    parsed_data = parse_data_for_chartkick(daily_reports);
-    Chartkick.LineChart("main-chart", parsed_data);
+    //parsed_data = parse_data_for_chartkick(daily_reports);
+    callChartkick("main-chart",daily_reports);
 }
 
+//AT THIS POINT THIS FUNCTION CAN BE DELETED
 //convert JSON file from {report_date: date, value: value} into {date:value} pairs
-function parse_data_for_chartkick(raw_array) {
-    var length = raw_array.length;
-    var parsed = {};
-
-    for(var i = 0; i < length; i++) {
-        parsed[raw_array[i].report_date] = raw_array[i].value;
-    }
-    return parsed;
-}
-
+// function parse_data_for_chartkick(raw_array) {
+//     var length = raw_array.length;
+//     var parsed = {};
 //
+//     for(var i = 0; i < length; i++) {
+//         parsed[raw_array[i].report_date] = raw_array[i].value;
+//     }
+//     return parsed;
+// }
+
 function updateChart() {
 
     //get values from both datepickers
@@ -53,22 +73,27 @@ function updateChart() {
         alert("Starting date must be earlier than the ending date.");
     }else{//if dates are in a good order
 
-        //filter JSON file using starting and ending date
-        filtered_data = daily_reports_reference.filter(function (current) {
 
-            var condition_a = Date.parse(current.report_date) <= end_date;
-            var condition_b = Date.parse(current.report_date) >= start_date;
+        // collection_length = daily_reports_reference.length;
+        // for(curr_record = 0; curr_record<collection_length;curr_record++){
+        //     if(daily_reports_reference)
+        // }
 
-            //allow only for dates that are between starting and ending date
-            if(condition_a && condition_b){
-                return true;    //record is allowed to display
-            }else{
-                return false;   //record is ignored
+        var filtered_data = {};
+
+        for (key in daily_reports_reference) {
+            if (daily_reports_reference.hasOwnProperty(key)) {
+                var condition_a = Date.parse(key) <= end_date;
+                var condition_b = Date.parse(key) >= start_date;
+
+                //allow only for dates that are between starting and ending date
+                if(condition_a && condition_b){
+                    filtered_data[key] = daily_reports_reference[key];
+                }
             }
-        });
+        }
     }
-    parsed_data = parse_data_for_chartkick(filtered_data);
-    Chartkick.LineChart("main-chart", parsed_data);
+    callChartkick("main-chart",filtered_data);
 }
 
 
@@ -87,21 +112,24 @@ function loadDatePickers(option){
 }
 
 function calculateDeposit(){
-    var deposit_value = document.getElementById('deposit-value-input').value;
-    var annual_rate = document.getElementById('interest-rate-input').value / 100;
-    var compounding_frequency = document.getElementById('compounding-frequency-input').value;
+    var deposit_value = parseInt(document.getElementById('deposit-value-input').value);
+    var annual_rate = parseFloat(document.getElementById('interest-rate-input').value / 100);
+    var compounding_frequency = parseInt(document.getElementById('compounding-frequency-input').value);
     var compounding_frequency_selected_type = document.getElementById('compounding-frequency-select').value;
 
     var period_beggining = document.getElementById('deposit-start-picker-input').value;
     var period_ending = document.getElementById('deposit-end-picker-input').value;
 
-
     period_beggining = Date.parse(period_beggining);
     period_ending = Date.parse(period_ending);
 
-
     //period given in years
-    var deposit_period = (period_ending - period_beggining)/(1000*60*60*24*365);
+    var deposit_period = parseInt((period_ending - period_beggining)/(1000*60*60*24*365));
+
+    console.log("depozyt" + deposit_value);
+    console.log("roczna stopa " + annual_rate);
+    console.log("okres kapitalizacji " + compounding_frequency + compounding_frequency_selected_type);
+    console.log("ile lat " + deposit_period);
 
     var in_a_year = 0;
     switch(compounding_frequency_selected_type){
@@ -118,8 +146,40 @@ function calculateDeposit(){
             in_a_year = 1;
             break;
     }
+
     annual_compounds = in_a_year / compounding_frequency;
     var deposit_value_after = deposit_value * Math.pow(1 + (annual_rate/annual_compounds),annual_compounds*deposit_period);
+    console.log("koncowa wartosc " + deposit_value_after);
 
-    
+
+    var chart_coordinates = [];
+    deposit_value_at_x = parseInt(deposit_value);
+    chart_coordinates[0] = [0, deposit_value_at_x];
+
+    for(x = 1; x <= in_a_year * deposit_period ; x++) {
+        chart_coordinates[x] = [x, deposit_value_at_x];
+        deposit_value_at_x = deposit_value_at_x + deposit_value_at_x * annual_rate/annual_compounds;
+    }
+    console.log(chart_coordinates);
+
+    Chartkick.LineChart("beka", chart_coordinates,
+        {
+            library:{
+                title: "Deposit value in time",
+                hAxis:{
+                    title:"Compounding period number"
+                },
+                vAxis:{
+                    title:"Deposit value"
+                },
+                discrete: false,    //don't show all possible xaxis values(dates)
+                curveType: "none",  //avoid curves
+                pointSize: 0        //shrink dot size to 0
+            }
+
+        }
+    );
 }
+
+
+

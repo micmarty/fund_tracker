@@ -1,20 +1,7 @@
 class FundsController < ApplicationController
 
 
-
   def index
-    @daily_reports = DailyReport.all
-    @chart_properties =
-        {
-            min: 0,
-            xtitle: "Data",
-            ytitle: "Wartość funduszu",
-            library:
-                {
-                    #width: 1000,
-                    #height:500,
-                    #backgroundColor: "#E5FFCC"
-                }
-        }
+    @daily_reports = DailyReport.pluck(:report_date, :value).to_h
   end
 end

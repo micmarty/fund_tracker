@@ -6,7 +6,16 @@
   <%= render "comparator/compounding_frequency"%>
   <%= render "comparator/datepickers"%>
 
-  <%= button_tag "Calculate and draw a chart!", type: 'button', onclick: "calculateDeposit();", class: 'btn btn-primary' %>
 
+
+  <%= button_tag "Calculate and draw a chart!",
+                 type: 'button',
+                 onclick: "calculateDeposit();",
+                 class: 'btn btn-primary',
+                 method: :put,
+                 remote: true %>
+
+
+  <div id="beka"></div>
 </div>
 

@@ -8,10 +8,10 @@
       </tr>
     </thead>
     <tbody>
-      <% @daily_reports.find_each do |daily_report| %>
+      <% @daily_reports.each do |daily_report| %>
           <tr>
-            <td><%= daily_report.report_date %></td>
-            <td><%= daily_report.value %></td>
+            <td><%= daily_report[0] %></td>
+            <td><%= daily_report[1] %></td>
           </tr>
       <% end %>
     </tbody>
