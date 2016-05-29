@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h1>Bank deposit calculator</h1>
+  <h1>Investment fund vs. Bank deposit calculator</h1>
 
   <%= render "comparator/deposit_value"%>
   <%= render "comparator/interest_rate"%>
@@ -16,6 +16,11 @@
                  remote: true %>
 
 
-  <div id="beka"></div>
+  <div id="comparator-chart"></div>
+
+
+  <p id="deposit-final-value" style="display: none"></p>
+  <br>
+  <p id="investment-final-value" style="display: none"></p>
 </div>
 
