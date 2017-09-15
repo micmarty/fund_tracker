@@ -4,7 +4,7 @@ This app is no longer maintained, but still deployable.
 ## Screens
 Main Page             |  Second Page
 :-------------------------:|:-------------------------:
-![Main page](/home/miczi/Pictures/chart.png  "Main page")  |  ![Main page](/home/miczi/Pictures/deposit.png  "Main page")
+![Main page](docs/chart.png  "Main page")  |  ![Main page](docs/deposit.png  "Main page")
 
 ## 1. Deployed at Heroku
 https://fund-tracker-app-prototype.herokuapp.com/
