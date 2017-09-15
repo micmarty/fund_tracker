@@ -1,15 +1,9 @@
-development:  
-  adapter: postgresql
-  encoding: unicode
-  database: miczi_dev
+development:
+  adapter: mysql2
+  host: 127.0.0.1
+  encoding: utf8
+  reconnect: false
+  database: fund_tracker_dev
   pool: 5
-  username: miczi
-  password: ''
-
-test:  
-  adapter: postgresql
-  encoding: unicode
-  database: miczi_test
-  pool: 5
-  username: miczi
-  password: ''
+  username: root
+  password: 

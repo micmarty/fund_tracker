@@ -14,3 +14,5 @@ capybara-*.html
 /coverage/
 /spec/tmp
 
+
+Gemfile\.lock
