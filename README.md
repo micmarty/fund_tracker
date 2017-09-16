@@ -42,11 +42,11 @@ http://localhost:3000 (by default)
 ```
 
 ## 3. TODO
-[x] Use Rails  5
-[x] Abandon PostgreSQL
-[x] Describe 'how to run' process
-[x] Add a CSV example file
-[ ] Migrate to Docker in order to simplify the deployment
+- [x] Use Rails  5
+- [x] Abandon PostgreSQL
+- [x] Describe 'how to run' process
+- [x] Add a CSV example file
+- [ ] Migrate to Docker in order to simplify the deployment
 
 ## 4. Rules were...
 
